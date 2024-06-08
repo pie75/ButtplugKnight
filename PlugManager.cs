@@ -31,6 +31,7 @@ namespace GoodVibes
 
         public ButtplugClient Client { get; private set; }
 
+        public string Address { get; init; }
         public int Port { get; init; }
         public int RetryAmount { get; init; }
 
@@ -173,7 +174,7 @@ namespace GoodVibes
         {
             if (_triedToInitialize) return false;
             _triedToInitialize = true;
-            _connector = new ButtplugWebsocketConnectorOptions(new Uri($"ws://localhost:{Port}/buttplug"));
+            _connector = new ButtplugWebsocketConnectorOptions(new Uri($"ws://{Address}:{Port}/buttplug"));
             SetupClient();
 
             var success = await TryConnect();

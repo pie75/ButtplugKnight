@@ -1,9 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <!-- Change this to the path of your modded HK installation -->
-    <HollowKnightRefs>%ProgramFiles(x86)%\Steam\SteamApps\common\Hollow Knight\hollow_knight_Data\Managed</HollowKnightRefs>
+    <HollowKnightRefs>H:\Program Files (x86)\Steam\SteamApps\common\Hollow Knight\hollow_knight_Data\Managed</HollowKnightRefs>
     <!-- Change this to the path where you want the ready-to-upload exports to be -->
-    <ExportDir>../ButtplugKnight/Build</ExportDir>
+    <ExportDir>../ButtplugKnight</ExportDir>
     <Platforms>AnyCPU;x64</Platforms>
     <!-- Uncomment this to generate a documentation file to be included with the mod -->
     <!--<DocumentationFile>$(OutputPath)/$(AssemblyTitle).xml</DocumentationFile>-->
@@ -20,7 +20,7 @@
     <FileVersion>1.0.0.0</FileVersion>
     <OutputPath>bin\$(Configuration)\</OutputPath>
     <LangVersion>latest</LangVersion>
-	  <HollowKnightModsDirectory>%ProgramFiles(x86)%\Steam\SteamApps\common\Hollow Knight\hollow_knight_Data\Managed\Mods</HollowKnightModsDirectory>
+	  <HollowKnightModsDirectory>H:\Program Files (x86)\Steam\SteamApps\common\Hollow Knight\hollow_knight_Data\Managed\Mods</HollowKnightModsDirectory>
   </PropertyGroup>
   <Target Name="CopyMod" AfterTargets="PostBuildEvent">
     <RemoveDir Condition="Exists('$(ExportDir)/$(TargetName)/')" Directories="$(ExportDir)/$(TargetName)/" />
@@ -34,8 +34,8 @@
     
     
     <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(ExportDir)/$(TargetName)/" />
-    <Copy SourceFiles="$(ExportDir)\bin\Debug\$(TargetFramework)\ButtplugManaged.dll" DestinationFolder="$(ExportDir)/$(TargetName)/" />
-    <Copy SourceFiles="$(ExportDir)\bin\Debug\$(TargetFramework)\websocket-sharp.dll" DestinationFolder="$(ExportDir)/$(TargetName)/" />
+    <Copy SourceFiles="$(ExportDir)\ButtplugManaged.dll" DestinationFolder="$(ExportDir)/$(TargetName)/" />
+    <Copy SourceFiles="$(ExportDir)\websocket-sharp.dll" DestinationFolder="$(ExportDir)/$(TargetName)/" />
 
     <Copy SourceFiles="$(ExportDir)/$(TargetName)/$(TargetName).dll" DestinationFolder="$(HollowKnightRefs)/Mods/$(TargetName)/" />
     <Copy SourceFiles="$(ExportDir)/$(TargetName)/ButtplugManaged.dll" DestinationFolder="$(HollowKnightRefs)/Mods/$(TargetName)/" />
@@ -78,13 +78,13 @@
       <HintPath>$(HollowKnightRefs)\Assembly-CSharp.dll</HintPath>
     </Reference>
     <Reference Include="Buttplug">
-      <HintPath>$(HollowKnightRefs)/Mods/$(TargetName)/Buttplug.dll</HintPath>
+      <HintPath>/Buttplug.dll</HintPath>
     </Reference>
     <Reference Include="Assembly-CSharp-firstpass">
       <HintPath>$(HollowKnightRefs)/Assembly-CSharp-firstpass.dll</HintPath>
     </Reference>
     <Reference Include="ButtplugManaged">
-      <HintPath>..\ButtplugIOMain\ManagedButtplugIo-main\ButtplugCSharp\bin\Debug\net48\ButtplugManaged.dll</HintPath>
+      <HintPath>/ButtplugManaged.dll</HintPath>
     </Reference>
     <Reference Include="ConditionalExpression">
       <HintPath>$(HollowKnightRefs)\ConditionalExpression.dll</HintPath>
@@ -300,7 +300,7 @@
       <HintPath>$(HollowKnightRefs)/UnityEngine.UIElementsModule.dll</HintPath>
     </Reference>
     <Reference Include="websocket-sharp">
-      <HintPath>..\ButtplugIOMain\ManagedButtplugIo-main\ButtplugCSharp\bin\Debug\net48\websocket-sharp.dll</HintPath>
+      <HintPath>../websocket-sharp.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

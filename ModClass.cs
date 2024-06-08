@@ -19,8 +19,10 @@ namespace ButtplugMod
         internal static ButtplugMod Instance;
         static PlayerData player => PlayerData.instance;
 
-        const int port = 12345;
         const int retryAttempts = 10;
+
+        private string address = "localhost";
+        private int port = 12345;
 
         private int   secondsPerHit = 5;
         private float baseVibeRate = 0.5f;
@@ -96,6 +98,8 @@ namespace ButtplugMod
                 vulnerableWhileVibing = bool.Parse(settings[nameof(vulnerableWhileVibing)]);
                 displayPercentage = bool.Parse(settings[nameof(displayPercentage)]);
                 displayTimeRemaining = bool.Parse(settings[nameof(displayTimeRemaining)]);
+                address = settings[nameof(address)];
+                port = int.Parse(settings[nameof(port)]);
             }
             catch (FileNotFoundException ex)
             {
@@ -123,7 +127,9 @@ namespace ButtplugMod
                     $"{nameof(punctuateHits)}={punctuateHits}",
                     $"{nameof(vulnerableWhileVibing)}={vulnerableWhileVibing}",
                     $"{nameof(displayPercentage)}={displayPercentage}",
-                    $"{nameof(displayTimeRemaining)}={displayTimeRemaining}"
+                    $"{nameof(displayTimeRemaining)}={displayTimeRemaining}",
+                    $"{nameof(address)}={address}",
+                    $"{nameof(port)}={port}"
                 };
                 File.WriteAllLines(settingsPath, settings.ToArray());
             }
@@ -203,6 +209,7 @@ namespace ButtplugMod
             {
                 plug = new PlugManager()
                 {
+                    Address = address,
                     Port = port,
                     RetryAmount = retryAttempts
                 };
