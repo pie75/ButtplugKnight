@@ -1,9 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <!-- Change this to the path of your modded HK installation -->
-    <HollowKnightRefs>E:\Program Files (x86)\Steam\SteamApps\common\Hollow Knight\hollow_knight_Data\Managed</HollowKnightRefs>
+    <HollowKnightRefs>%ProgramFiles(x86)%\Steam\SteamApps\common\Hollow Knight\hollow_knight_Data\Managed</HollowKnightRefs>
     <!-- Change this to the path where you want the ready-to-upload exports to be -->
-    <ExportDir>C:\Users\Danatron1\source\repos\ButtplugKnight</ExportDir>
+    <ExportDir>../ButtplugKnight/Build</ExportDir>
     <Platforms>AnyCPU;x64</Platforms>
     <!-- Uncomment this to generate a documentation file to be included with the mod -->
     <!--<DocumentationFile>$(OutputPath)/$(AssemblyTitle).xml</DocumentationFile>-->
@@ -20,7 +20,7 @@
     <FileVersion>1.0.0.0</FileVersion>
     <OutputPath>bin\$(Configuration)\</OutputPath>
     <LangVersion>latest</LangVersion>
-	  <HollowKnightModsDirectory>E:\Program Files (x86)\Steam\SteamApps\common\Hollow Knight\hollow_knight_Data\Managed\Mods</HollowKnightModsDirectory>
+	  <HollowKnightModsDirectory>%ProgramFiles(x86)%\Steam\SteamApps\common\Hollow Knight\hollow_knight_Data\Managed\Mods</HollowKnightModsDirectory>
   </PropertyGroup>
   <Target Name="CopyMod" AfterTargets="PostBuildEvent">
     <RemoveDir Condition="Exists('$(ExportDir)/$(TargetName)/')" Directories="$(ExportDir)/$(TargetName)/" />
@@ -87,7 +87,7 @@
       <HintPath>..\ButtplugIOMain\ManagedButtplugIo-main\ButtplugCSharp\bin\Debug\net48\ButtplugManaged.dll</HintPath>
     </Reference>
     <Reference Include="ConditionalExpression">
-      <HintPath>E:\Program Files (x86)\Steam\SteamApps\common\Hollow Knight\hollow_knight_Data\Managed\ConditionalExpression.dll</HintPath>
+      <HintPath>$(HollowKnightRefs)\ConditionalExpression.dll</HintPath>
     </Reference>
     <Reference Include="GalaxyCSharp">
       <HintPath>$(HollowKnightRefs)/GalaxyCSharp.dll</HintPath>
@@ -114,13 +114,13 @@
       <HintPath>$(HollowKnightRefs)/MonoMod.Utils.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
-      <HintPath>E:\Program Files (x86)\Steam\SteamApps\common\Hollow Knight\hollow_knight_Data\Managed\mscorlib.dll</HintPath>
+      <HintPath>$(HollowKnightRefs)\mscorlib.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>$(HollowKnightRefs)/netstandard.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
-      <HintPath>E:\Program Files (x86)\Steam\SteamApps\common\Hollow Knight\hollow_knight_Data\Managed/Newtonsoft.Json.dll</HintPath>
+      <HintPath>$(HollowKnightRefs)/Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="PlayMaker">
       <HintPath>$(HollowKnightRefs)/PlayMaker.dll</HintPath>
